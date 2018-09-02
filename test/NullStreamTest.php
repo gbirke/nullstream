@@ -26,7 +26,27 @@ class NullStreamTest extends TestCase
     public function testStreamCanBeOpened() {
         $stream = fopen( 'null://foo', 'r' );
 
-        $this->assertNotFalse( $stream, 'Stream fopen should return a resource' );
+        $this->assertNotFalse( $stream, 'fopen should return a resource' );
+    }
+
+    /**
+     * @dataProvider urlProvider
+     * @param string $url
+     * @param string $description
+     */
+    public function testDifferentUrlsAreValid( string $url, $description ) {
+        $stream = fopen( $url, 'r' );
+
+        $this->assertNotFalse( $stream, sprintf('fopen for %s should return a resource', $description ) );
+    }
+
+    public function urlProvider() {
+        yield [ 'null:///', 'Root path' ];
+        yield [ 'null:///', 'absolute path' ];
+        yield [ 'null://foo/bar/baz', 'nested path' ];
+        yield [ 'null://foo.exe', 'suffixed path' ];
+        yield [ 'null://foo?param=1', 'path with parameters' ];
+        yield [ 'null://foo#start', 'path with anchor' ];
     }
 
     public function testStreamCanBeWrittenTo() {
