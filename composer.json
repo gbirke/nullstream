@@ -1,0 +1,22 @@
+{
+    "name": "birke/nullstream",
+    "description": "A black hole stream wrapper",
+    "require-dev": {
+        "phpunit/phpunit": "^7.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabriel Birke",
+            "email": "gb@birke-software.de"
+        }
+    ],
+    "require": {
+        "php": "~7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Birke\\NullStream\\": "src/"
+        }
+    }
+}
