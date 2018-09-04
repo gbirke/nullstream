@@ -1,6 +1,6 @@
 # NullStream
 
-A PHP stream wrapper equivalent to `/dev/null` - a stream that almost
+A PHP stream wrapper equivalent to `/dev/null` - a stream that is almost
 guaranteed not to fail on `fopen`, that you can write to without it 
 storing anything and that returns only empty strings when you read from it.
 
